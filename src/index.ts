@@ -82,7 +82,8 @@ const callOpenAI = async (
       { role: 'system', content: systemPrompt },
       { role: 'user', content: sourceCode }
     ],
-    temperature: 0.1
+    temperature: 0.1,
+    service_tier: 'flex'
   })
   const content = response.choices[0]?.message?.content ?? ''
   return stripCodeFences(content)
