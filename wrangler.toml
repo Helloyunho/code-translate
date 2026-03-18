@@ -5,3 +5,6 @@ main = "src/index.ts"
 [assets]
 directory = "./public"
 binding = "ASSETS"
+
+[placement]
+region = "aws:ap-northeast-2"
