@@ -37,6 +37,7 @@ IDK why you would do this when it already has custom language support, but anywa
 - Frontend
     - Pure HTML/CSS/JS (no frameworks, just vanilla)
     - CodeMirror 6 for code editing and syntax highlighting
+    - Lucide for icons(those embedded SVGs in HTML are from Lucide, somehow my agent did that)
 - Backend
     - Hono for serverless API
         - Deployed on Cloudflare Workers
