@@ -1,0 +1,7 @@
+name = "code-translate"
+compatibility_date = "2024-03-18"
+main = "src/index.ts"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"

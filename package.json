@@ -1,0 +1,24 @@
+{
+  "name": "code-translate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "hono": "^4.12.8",
+    "@google/generative-ai": "^0.24.1",
+    "openai": "^6.32.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260317.1",
+    "eslint": "^9",
+    "neostandard": "^0.13.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.1",
+    "wrangler": "^4.75.0"
+  }
+}

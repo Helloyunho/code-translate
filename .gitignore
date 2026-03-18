@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Cloudflare local state and secrets
+.wrangler/
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Lock files (requested)
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build artifacts
+dist/
+build/
+coverage/
+
+# Project notes requested to stay local
+docs/language-support-guide.md
+
+# macOS being stupid
+.DS_Store

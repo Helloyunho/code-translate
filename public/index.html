@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta property="og:title" content="Code Translate">
+    <meta property="og:site_name" content="Code Translate">
+    <meta property="og:url" content="https://translate.helloyunho.xyz">
+    <meta property="og:description" content="Translate your code into another programming language">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#f4f7fc" />
+    <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f131a" media="(prefers-color-scheme: dark)" />
+    <title>Code Translate</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/script.js" defer></script>
+</head>
+
+<body>
+    <main class="container">
+        <div class="panel source-panel">
+            <div class="lang-control">
+                <div class="lang-selector">
+                    <select id="source-lang" aria-label="Source language">
+                        <option value="auto">Auto Detect</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="typescript">TypeScript</option>
+                        <option value="python">Python</option>
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="rust">Rust</option>
+                        <option value="zig">Zig</option>
+                        <option value="dart">Dart</option>
+                        <option value="swift">Swift</option>
+                        <option value="objc">Objective-C</option>
+                        <option value="asm_x86">ASM (x86)</option>
+                        <option value="asm_x86_64">ASM (x86_64)</option>
+                        <option value="asm_arm">ASM (ARM)</option>
+                        <option value="asm_arm64">ASM (ARM64)</option>
+                        <option value="custom">Custom language...</option>
+                    </select>
+                    <span class="icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                    </span>
+                </div>
+                <input id="source-custom-lang" class="custom-lang-input" type="text" placeholder="Type source language"
+                    aria-label="Custom source language" hidden>
+                <span id="source-highlight-badge" class="highlight-badge" hidden>No highlight</span>
+            </div>
+            <div id="source-editor" class="editor" role="region" aria-label="Source code editor"></div>
+        </div>
+
+        <button id="translate-btn" class="translate-arrow" type="button" title="Translate" aria-label="Translate code">
+            <span class="translate-icon" aria-hidden="true">→</span>
+            <span class="translate-label">Translate</span>
+        </button>
+
+        <div class="panel target-panel">
+            <div class="target-toolbar">
+                <div class="lang-control">
+                    <div class="lang-selector">
+                        <select id="target-lang" aria-label="Target language">
+                            <option value="javascript">JavaScript</option>
+                            <option value="typescript">TypeScript</option>
+                            <option value="python">Python</option>
+                            <option value="c" selected>C</option>
+                            <option value="cpp">C++</option>
+                            <option value="java">Java</option>
+                            <option value="rust">Rust</option>
+                            <option value="zig">Zig</option>
+                            <option value="dart">Dart</option>
+                            <option value="swift">Swift</option>
+                            <option value="objc">Objective-C</option>
+                            <option value="asm_x86">ASM (x86)</option>
+                            <option value="asm_x86_64">ASM (x86_64)</option>
+                            <option value="asm_arm">ASM (ARM)</option>
+                            <option value="asm_arm64">ASM (ARM64)</option>
+                            <option value="custom">Custom language...</option>
+                        </select>
+                        <span class="icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                        </span>
+                    </div>
+                    <input id="target-custom-lang" class="custom-lang-input" type="text"
+                        placeholder="Type target language" aria-label="Custom target language" hidden>
+                    <span id="target-highlight-badge" class="highlight-badge" hidden>No highlight</span>
+                    <span id="translating-indicator" class="translating-indicator" hidden>
+                        <span class="spinner" aria-hidden="true"></span>
+                        Translating...
+                    </span>
+                </div>
+            </div>
+            <div class="editor-wrap">
+                <button id="copy-btn" class="copy-icon-btn" type="button" title="Copy translated code"
+                    aria-label="Copy translated code">
+                    <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                </button>
+                <div id="target-editor" class="editor read-only" role="region" aria-label="Translated code editor">
+                </div>
+            </div>
+        </div>
+        <div id="feedback-message" class="feedback-message" role="status" aria-live="polite" aria-atomic="true"
+            aria-hidden="true">
+        </div>
+    </main>
+</body>
+
+</html>
