@@ -59,7 +59,12 @@
         </div>
 
         <button id="translate-btn" class="translate-arrow" type="button" title="Translate" aria-label="Translate code">
-            <span class="translate-icon" aria-hidden="true">→</span>
+            <svg class="translate-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+            </svg>
             <span class="translate-label">Translate</span>
         </button>
 
@@ -124,6 +129,12 @@
         <div id="feedback-message" class="feedback-message" role="status" aria-live="polite" aria-atomic="true"
             aria-hidden="true">
         </div>
+        <footer class="site-footer" aria-label="Project information">
+            AI can make mistakes, so never 100% trust the output without reviewing and testing it. Do not use this
+            tool with sensitive, confidential, or proprietary code.<br>Made by Helloyunho.
+            <a href="https://github.com/Helloyunho/code-translate" target="_blank" rel="noopener noreferrer">GitHub
+                repository</a>
+        </footer>
     </main>
 </body>
 
